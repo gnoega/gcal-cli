@@ -77,6 +77,10 @@ func (c *Client) tokenFromFile() (*oauth2.Token, error) {
 }
 
 func (c *Client) getTokenFromWeb() {
+	done := make(chan bool)
+	go c.showProgress(done)
+	defer close(done)
+
 	authUrl := c.config.AuthCodeURL("state-token", oauth2.AccessTypeOffline)
 	var code string
 
@@ -168,6 +172,21 @@ func (c *Client) exchangeToken(code string) {
 	c.token = token
 }
 
+func (c *Client) showProgress(done chan bool) {
+	loadingChars := []string{"⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"}
+	i := 0
+	for {
+		select {
+		case <-done:
+			fmt.Print("\r")
+			return
+		default:
+			fmt.Printf("\rAuthenticating... %s", loadingChars[i%len(loadingChars)])
+			time.Sleep(100 * time.Millisecond)
+			i++
+		}
+	}
+}
 
 func GetCredential() []byte {
 	path := pathutils.GetCredentialsFile()
