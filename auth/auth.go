@@ -129,6 +129,7 @@ func (c *Client) getTokenFromWeb() {
 	wg.Wait()
 
 	c.exchangeToken(code)
+	done <- true
 	return
 }
 
@@ -178,7 +179,7 @@ func (c *Client) showProgress(done chan bool) {
 	for {
 		select {
 		case <-done:
-			fmt.Print("\r")
+			fmt.Print("\r\033[K")
 			return
 		default:
 			fmt.Printf("\rAuthenticating... %s", loadingChars[i%len(loadingChars)])
