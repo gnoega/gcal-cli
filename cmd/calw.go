@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"github.com/agungfir98/gcal-cli/api"
-	"github.com/agungfir98/gcal-cli/utils"
 	timeutils "github.com/agungfir98/gcal-cli/utils/time_utils"
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
@@ -36,10 +35,7 @@ var calwCmd = &cobra.Command{
 
 		srv := api.GetCalendar()
 
-		loading := make(chan bool)
-		go utils.ShowLoading(loading)
 		events, err := srv.Events.List("primary").ShowDeleted(false).SingleEvents(true).TimeMin(sun.Format(time.RFC3339)).TimeMax(timeutils.EndOfDay(sunday.AddDate(0, 0, 6)).Format(time.RFC3339)).OrderBy("startTime").Do()
-		loading <- true
 
 		if err != nil {
 			log.Fatalf("unable to retreive calendar event: %v", err)
