@@ -215,7 +215,10 @@ func (c *Calendar) Render() {
 		table.SetHeader([]string{"summary", "start", "end", "attendees", "link"})
 		table.Render()
 	case List:
-		// TODO: continue tomorrow 2024-09-08 implement the list render
+		if len(c.eventlist) == 0 {
+			fmt.Println("no events")
+			return
+		}
 		for _, item := range c.eventlist {
 			fmt.Printf("summary\t\t: %v\n", item.Summary)
 			fmt.Printf("start\t\t: %v\n", item.Start)
