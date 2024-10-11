@@ -105,13 +105,7 @@ func (c *Client) getTokenFromWeb() {
 			os.Exit(1)
 		}
 
-		token, err := c.config.Exchange(context.TODO(), code)
-
-		if err != nil {
-			log.Fatalf("unable to retreive token from web: %v\n", err)
-		}
-
-		c.token = token
+		c.exchangeToken(code)
 		return
 	}
 
@@ -130,18 +124,11 @@ func (c *Client) getTokenFromWeb() {
 
 	wg.Wait()
 
-	token, err := c.config.Exchange(context.Background(), code)
-	if err != nil {
-		log.Fatalf("unable to retreive token from web: %v\n", err)
-	}
-
-	c.token = token
+	c.exchangeToken(code)
 	return
 }
 
 func (c *Client) saveToken() {
-	fmt.Printf("\rSaving token file to: %s\n", c.tokenFile)
-
 	if c.token == nil {
 		log.Fatalf("no token")
 	}
@@ -172,6 +159,15 @@ func (c *Client) refreshToken() error {
 	return nil
 
 }
+
+func (c *Client) exchangeToken(code string) {
+	token, err := c.config.Exchange(context.Background(), code)
+	if err != nil {
+		log.Fatalf("unable to retreive token from web: %v\n", err)
+	}
+	c.token = token
+}
+
 
 func GetCredential() []byte {
 	path := pathutils.GetCredentialsFile()
