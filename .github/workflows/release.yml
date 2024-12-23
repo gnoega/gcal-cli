@@ -1,0 +1,52 @@
+name: Build and release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [linux, windows, darwin]
+        arch: [amd64, arm64]
+    steps:
+      - name: Check out cdode
+        uses: actions/checkout@v3
+
+      - name: Set up go
+        uses: actions/setup-go@v4
+        with:
+          go-version: 1.22
+
+      - name: Build binary
+        run: |
+          GOOS=${{matrix.os}} GOARCH=${{matrix.arch}} go build -o gcal-cli-${{matrix.os}}-${{matrix.arch}}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: gcal-cli-${{matrix.os}}-${{matrix.arch}}
+          path: gcal-cli-${{matrix.os}}-${{matrix.arch}}
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [linux, windows, darwin]
+        arch: [amd64, arm64]
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: gcal-cli-${{matrix.os}}-${{matrix.arch}}
+
+      - name: Create github release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: gcal-cli-${{matrix.os}}-${{matrix.arch}}
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
