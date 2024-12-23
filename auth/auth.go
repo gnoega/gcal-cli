@@ -94,7 +94,7 @@ func (c *Client) getTokenFromWeb() {
 		log.Printf("unable to open the browser, you may do it manually.\n visit: %v\n", authUrl)
 
 		go func() {
-			fmt.Print("find 'code' query in the url and paste the code here: ")
+			fmt.Print("\nfind 'code' query in the url and paste the code here: ")
 			if _, err := fmt.Scan(&code); err != nil {
 				log.Fatalf("Unable to read authorization code: %v", err)
 			}
