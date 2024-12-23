@@ -11,16 +11,19 @@
 
 a command line interface for printing events from user google calendar
 
-## requirements
-
-- go installed in your machine
-
 ## installation
 
-via **go install**
+### via **go install**
 
 ```shell
 go install github.com/agungfir98/gcal-cli@latest
+
+```
+
+### via curl (Linux and Mac)
+
+```shell
+curl -sL https://raw.githubusercontent.com/agungfir98/gcal-cli/main/install.sh | bash
 
 ```
 
