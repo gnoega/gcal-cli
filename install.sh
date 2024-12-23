@@ -20,7 +20,7 @@ else
   exit 1
 fi
 
-BINARY_NAME="$(TOOL_NAME)-$(OS)-$(ARCH)"
+BINARY_NAME="${TOOL_NAME}-${OS}-${ARCH}"
 
 echo "installing $TOOL_NAME for $OS/$ARCH..."
 
