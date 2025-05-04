@@ -55,3 +55,17 @@ func ParseWithCustomFormat(format, input string) (time.Time, error) {
 	goLayout := ConvertToGoLayout(format)
 	return time.ParseInLocation(goLayout, input, t.Location())
 }
+
+func DaysIn(month time.Month, year int) int {
+	firstDayOfMonth := time.Date(year, month, 1, 0, 0, 0, 0, time.UTC)
+
+	var nextMonth time.Time
+
+	if month == time.December {
+		nextMonth = time.Date(year+1, time.January, 1, 0, 0, 0, 0, time.UTC)
+	} else {
+		nextMonth = time.Date(year, month+1, 1, 0, 0, 0, 0, time.UTC)
+	}
+
+	return int(nextMonth.Sub(firstDayOfMonth).Hours() / 24)
+}
