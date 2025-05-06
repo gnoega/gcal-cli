@@ -22,9 +22,10 @@ var calwCmd = &cobra.Command{
 		now := time.Now()
 		weekday := int(now.Weekday())
 		sunday := now.AddDate(0, 0, -weekday)
+		dayInWeek := 7
 		var weekHeaderSlc [7]string
 
-		for i := 0; i < 7; i++ {
+		for i := range dayInWeek {
 			day := sunday.AddDate(0, 0, i)
 			weekHeaderSlc[i] = day.Format("Mon (02)")
 		}
