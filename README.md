@@ -20,16 +20,9 @@ go install github.com/agungfir98/gcal-cli@latest
 
 ```
 
-### via curl (Linux and Mac)
-
-```shell
-curl -sL https://raw.githubusercontent.com/agungfir98/gcal-cli/main/install.sh | bash
-
-```
-
 ## setup
 
-Run the following command to create `(your home dir)/.config/gcal-cli` in your user home directory, this directory is where you can store the credentials.json and the oauth2 token
+Run the following command to create `$HOME/.config/gcal-cli` in your user home directory, this directory is where you can store the credentials.json and the oauth2 token
 
 ```shell
 gcal-cli config
@@ -40,7 +33,7 @@ gcal-cli config
 Google calendar apis require user to setup a Google Cloud Project and obtain the credentials to be able to access the api, I won't provide the google cloud platform credentials so you may obtain it by following the documentation ->
 [setup gcp](https://developers.google.com/calendar/api/quickstart/go)
 
-once you obtain the credentials.json you have to put it in the `(your home dir)/.config/gcal-cli`
+once you obtain the credentials.json you have to put it in the `$HOME/.config/gcal-cli`
 
 ## Authenticating
 
