@@ -31,7 +31,7 @@ gcal-cli config
 ### obtain the credentials
 
 Google calendar apis require user to setup a Google Cloud Project and obtain the credentials to be able to access the api, I won't provide the google cloud platform credentials so you may obtain it by following the documentation ->
-[setup gcp](https://developers.google.com/calendar/api/quickstart/go)
+[setup gcp](https://developers.google.com/workspace/calendar/api/quickstart/go#authorize_credentials_for_a_desktop_application)
 
 once you obtain the credentials.json you have to put it in the `$HOME/.config/gcal-cli`
 
