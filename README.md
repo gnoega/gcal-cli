@@ -16,7 +16,7 @@ a command line interface for printing events from user google calendar
 ### via **go install**
 
 ```shell
-go install github.com/agungfir98/gcal-cli@latest
+go install github.com/gnoega/gcal-cli@latest
 
 ```
 

@@ -10,9 +10,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/agungfir98/gcal-cli/server"
-	"github.com/agungfir98/gcal-cli/utils/browser"
-	pathutils "github.com/agungfir98/gcal-cli/utils/path_utils"
+	"github.com/gnoega/gcal-cli/server"
+	"github.com/gnoega/gcal-cli/utils/browser"
+	pathutils "github.com/gnoega/gcal-cli/utils/path_utils"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
 	"google.golang.org/api/calendar/v3"

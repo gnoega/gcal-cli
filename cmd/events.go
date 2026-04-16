@@ -1,5 +1,5 @@
 /*
-Copyright © 2024 Agung Firmansyah agungfir98@gmail.com
+Copyright © 2024 Agung Firmansyah gnoega@gmail.com
 */
 package cmd
 
@@ -10,8 +10,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/agungfir98/gcal-cli/api"
-	timeutils "github.com/agungfir98/gcal-cli/utils/time_utils"
+	"github.com/gnoega/gcal-cli/api"
+	timeutils "github.com/gnoega/gcal-cli/utils/time_utils"
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
 	"google.golang.org/api/calendar/v3"

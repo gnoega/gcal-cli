@@ -1,5 +1,5 @@
 /*
-Copyright © 2024 Agung Firmansyah agungfir98@gmail.com
+Copyright © 2024 Agung Firmansyah gnoega@gmail.com
 */
 package cmd
 
@@ -9,7 +9,7 @@ import (
 	"os"
 	"path/filepath"
 
-	pathutils "github.com/agungfir98/gcal-cli/utils/path_utils"
+	pathutils "github.com/gnoega/gcal-cli/utils/path_utils"
 	"github.com/spf13/cobra"
 )
 

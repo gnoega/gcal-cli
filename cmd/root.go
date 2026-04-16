@@ -1,5 +1,5 @@
 /*
-Copyright © 2024 Agung Firmansyah agungfir98@gmail.com
+Copyright © 2024 Agung Firmansyah gnoega@gmail.com
 */
 package cmd
 

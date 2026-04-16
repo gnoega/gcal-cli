@@ -2,7 +2,7 @@
 
 set -e
 
-REPO="agungfir98/gcal-cli"
+REPO="gnoega/gcal-cli"
 TOOL_NAME="gcal-cli"
 LATEST_URL="https://api.github.com/repos/$REPO/releases/latest"
 

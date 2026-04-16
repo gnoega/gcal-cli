@@ -4,7 +4,7 @@ import (
 	"context"
 	"log"
 
-	"github.com/agungfir98/gcal-cli/auth"
+	"github.com/gnoega/gcal-cli/auth"
 	"google.golang.org/api/calendar/v3"
 	"google.golang.org/api/option"
 )
